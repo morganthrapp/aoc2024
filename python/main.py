@@ -1,7 +1,17 @@
+import os
 import datetime
 import importlib
 
 from python_utils.aoc_utils import get_input
+
+def write_answer_file(day, part, answer):
+  file_path = f'./answers/{day}-{part}' 
+  if not os.path.exists('./answers'):
+    os.makedirs('./answers')
+  if not os.path.exists(file_path):
+    with open(file_path, 'w') as answer_file:
+      answer_file.write(str(answer))
+
 
 for day in range(1, datetime.datetime.now().day + 1):
   try:
@@ -13,12 +23,21 @@ for day in range(1, datetime.datetime.now().day + 1):
 
   data = get_input(day)
   
-  print(f'Day {day} - Part 1: {module.part_one(data)}')
+  part_one_answer = module.part_one(data)
+
+  write_answer_file(day, 1, part_one_answer)
+
+  print(f'Day {day} - Part 1: {part_one_answer}')
   try:
     part_two = module.part_two
   except AttributeError:
     print(f'Day {day} Part 2 not implemented yet')
     continue
 
-  print(f'Day {day} - Part 2: {module.part_two(data)}')
+  part_two_answer = module.part_two(data)
+
+  write_answer_file(day, 2, part_two_answer)
+
+  print(f'Day {day} - Part 2: {part_two_answer}')
+
   
