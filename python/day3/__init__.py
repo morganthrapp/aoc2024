@@ -1,9 +1,8 @@
-from python_utils.aoc_utils import get_input
 import re
 
 
-def part_one():
-  data = ''.join(get_input(3))
+def part_one(data):
+  data = ''.join(data)
   matcher = re.compile('mul\\((\\d{1,3}),(\\d{1,3})\\)')
   muls = matcher.findall(data)
   total = 0
@@ -13,8 +12,8 @@ def part_one():
     
   return total
 
-def part_two():
-  data = ''.join(get_input(3))
+def part_two(data):
+  data = ''.join(data)
   matcher = re.compile("(?:mul\\((\\d{1,3}),(\\d{1,3})\\)|(do\\(\\))|(don't\\(\\)))")
   instructions = matcher.findall(data)
   total = 0

@@ -1,7 +1,4 @@
-from python_utils.aoc_utils import get_input
-
-
-def part_one():
+def part_one(data):
   valid_reports = 0
   def is_safe(report):
     report = list(map(int, report.split()))
@@ -16,12 +13,12 @@ def part_one():
         return False
     return True
 
-  for report in get_input(2):
+  for report in data:
     valid_reports += 1 if is_safe(report) else 0
   
   return valid_reports
 
-def part_two():
+def part_two(data):
   valid_reports = 0
   def is_subset_safe(report):
     for i in range(len(report)):
@@ -44,7 +41,7 @@ def part_two():
         return can_recurse and is_subset_safe(report)
     return True
 
-  for report in get_input(2):
+  for report in data:
     report = list(map(int, report.split()))
     valid_reports += 1 if is_safe(report) else 0
   

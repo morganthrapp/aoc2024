@@ -1,10 +1,9 @@
-from python_utils.aoc_utils import get_input
 from itertools import groupby
 
-def build_data():
+def build_data(data):
   first = []
   second = []
-  for line in get_input(1):
+  for line in data:
     f, s = line.split()
     first.append(int(f))
     second.append(int(s))
@@ -13,19 +12,19 @@ def build_data():
   second.sort()
   return first, second
 
-def part_one():
+def part_one(data):
   total = 0
 
-  first, second = build_data()
+  first, second = build_data(data)
 
   for f, s in zip(first, second):
     total += abs(f - s)
 
   return total
 
-def part_two():
+def part_two(data):
   total = 0
-  first, second = build_data()
+  first, second = build_data(data)
 
   second_counts = {k: len(list(g)) for k, g in groupby(second)}
 
