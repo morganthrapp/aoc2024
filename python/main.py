@@ -2,7 +2,7 @@ import os
 import datetime
 import importlib
 
-from python_utils.aoc_utils import get_input
+from utils.aoc_utils import get_input
 
 def write_answer_file(day, part, answer):
   file_path = f'./answers/{day}-{part}' 
