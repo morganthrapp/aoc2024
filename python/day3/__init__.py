@@ -3,9 +3,9 @@ import re
 
 
 def part_one():
-  instructions = ''.join(get_input(3))
+  data = ''.join(get_input(3))
   matcher = re.compile('mul\\((\\d{1,3}),(\\d{1,3})\\)')
-  muls = matcher.findall(instructions)
+  muls = matcher.findall(data)
   total = 0
   for match in muls:
     a, b = match
@@ -14,13 +14,13 @@ def part_one():
   return total
 
 def part_two():
-  instructions = ''.join(get_input(3))
+  data = ''.join(get_input(3))
   matcher = re.compile("(?:mul\\((\\d{1,3}),(\\d{1,3})\\)|(do\\(\\))|(don't\\(\\)))")
-  muls = matcher.findall(instructions)
+  instructions = matcher.findall(data)
   total = 0
   active = True
-  for match in muls:
-    a, b, do, do_not = match
+  for instruction in instructions:
+    a, b, do, do_not = instruction
     if active and a and b:
       total += (int(a) * int(b))
     if do:
