@@ -34,7 +34,7 @@ def part_two():
 
   def is_safe(report, can_recurse=True):
     is_ascending = report[0] < report[1]
-    for i, (current, next) in enumerate(zip(report, report[1:]), 1):
+    for current, next in zip(report, report[1:]):
       if is_ascending and (current >= next):
         return can_recurse and is_subset_safe(report)
       elif not is_ascending and current <= next:

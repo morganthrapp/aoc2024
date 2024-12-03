@@ -6,6 +6,7 @@ for day in range(1, datetime.datetime.now().day + 1):
     module = importlib.import_module(f'day{day}')
   except ModuleNotFoundError as e:
     print(f'Day {day} has not been implemented yet')
+    print(e)
     continue
   
   print(f'Day {day} - Part 1: {module.part_one()}')
